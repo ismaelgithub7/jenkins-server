@@ -1,0 +1,16 @@
+version: v3
+services:
+  jenkins-server:
+    container_name: jenkins-server
+    image: jenkins/jenkins:jdk21-preview
+    ports:
+      - 50:8080
+    volumes:
+      - ./docker-data:/docker-data/
+      - jenkins-data2:/var/jenkins_home/
+      - ./jenkins-ssh:/jenkins-ssh/
+    command: /docker-data/jenkins-server-init.sh
+
+volumes:
+  jenkins-data2:
+  docker-data:
